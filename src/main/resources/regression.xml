@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="10" name="regression" configfailurepolicy="continue">
+    <test name="regression">
+        <classes>
+            <class name="Regression.AccountsTypesTest"/>
+            <class name="Regression.Mt4PageTest"/>
+            <class name="Regression.ContactsTest"/>
+            <class name="Regression.DepositsAndWithdrawalsTest"/>
+            <class name="Regression.EarningsCalendarTest"/>
+            <class name="Regression.EconomicCalendarTest"/>
+            <class name="Regression.Mt4WebTerminalTest"/>
+            <class name="Regression.StatusCode_Test"/>
+            <class name="Regression.TradingConditionsTest"/>
+            <class name="Regression.TradingHoursTest"/>
+<!--            <class name="Regression.TradingSpecificationsTest"/>-->
+        </classes>
+    </test>
+</suite>

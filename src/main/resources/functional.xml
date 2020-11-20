@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="10" name="Functional_CRM_and_Flow_tests" configfailurepolicy="continue">
+    <test name="Functional_CRM_and_Flow_tests">
+        <classes>
+            <class name="Functional.RegistrationAndLoginTest"/>
+            <class name="Regression.Mt4PageTest"/>
+        </classes>
+    </test>
+</suite>

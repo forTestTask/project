@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration strict="true"
+               name="XMLConfigTest" packages="org.apache.logging.log4j.test">
+    <Filter type="ThresholdFilter" level="trace"/>
+
+    <Appenders>
+        <Console name="STDOUT">
+            <Layout type="PatternLayout" pattern="%d [%t] %-5p %C - %m%n"/>
+        </Console>
+
+        <Routing name="Routing">
+            <Routes pattern="$${ctx:className}">
+                <Route>
+                    <RollingFile
+                            fileName="logs/${ctx:className}.log"
+                            name="rollingFile"
+                            filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+                        <PatternLayout>
+                            <Pattern>%d %p %C{1} [%t] %m%n</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy interval="1"/>
+                            <SizeBasedTriggeringPolicy
+                                    size="250 MB"/>
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+
+        <Async name="async" bufferSize="1000" includeLocation="true">
+            <AppenderRef ref="Routing"/>
+        </Async>
+
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="Routing"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
